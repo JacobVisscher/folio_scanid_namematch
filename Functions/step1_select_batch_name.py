@@ -6,6 +6,7 @@ import math
 import pandas as pd
 import re
 
+
 # set inventaris number
 print("input the inventaris number: for example '1' ")
 inumber = input()
@@ -20,10 +21,10 @@ inputfolder = os.path.join("/home", "rutger", "python", "output_step0")
 outputfolder = os.path.join("/home", "rutger", "python", "output_step1")
 
 # set the base string for file names
-basestring = "NL-HaNA_2.01.15_"
+basestring = "NL-HaNA_2.13.04_"
 
 # set base string for inventaris links
-archive_directory = "2.01.15/"
+archive_directory = "2.13.04/"
 
 # set directory.
 directory = "{}{}{}/page".format(path, archive_directory, inumber)

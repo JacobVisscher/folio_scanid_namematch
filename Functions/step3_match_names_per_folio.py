@@ -26,10 +26,10 @@ inputfolder_2 = os.path.join("/home", "rutger", "python", "output_step2")
 outputfolder = os.path.join("/home", "rutger", "python", "output_step3")
 
 # set the base string for file names
-basestring = "NL-HaNA_2.01.15_"  # change x to location
+basestring = "NL-HaNA_2.13.04_"  # change x to location
 
 # set base string for inventaris links
-archive_directory = "2.01.15/"
+archive_directory = "2.13.04/"
 
 # set directory. /data/2.01.15/118/page    '/data/2.01.15/195/page'
 directory = "{}{}{}/page".format(path, archive_directory, inumber)
@@ -71,7 +71,7 @@ f.close()
 # step 1. select input files and build output file V
 
 
-max_inv = 500
+max_inv = 100
 selected_names_dict = defaultdict(list)
 
 # Read the name list file and store the rows in a list
@@ -88,7 +88,7 @@ with open("/" + inputfolder_2 + "/" + input_list_filename, newline="") as csvfil
 for i in range(1, max_inv):
     names = []
     uid = []
-    string_to_check = "2.01.15/{}//{}//".format(inumber, i)
+    string_to_check = "2.13.04/{}//{}//".format(inumber, i)
 
     # Loop over the rows in the name list
     for row in name_list_rows:
