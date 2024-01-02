@@ -13,13 +13,13 @@ def run(inum, toegangsnummer):
     inumber = inum
 
     # set path
-    path = "/data/"
+    path = "/media/rutger/NAHD653/"
 
-    path_folder = "/home/rutger/python/"
+    path_folder = "/data/folio_scanid_namematch/"
 
-    inputfolder = os.path.join("/home", "rutger", "python", "output_step0")
+    inputfolder = os.path.join("/data", "folio_scanid_namematch", "output_step0")
 
-    outputfolder = os.path.join("/home", "rutger", "python", "output_step1")
+    outputfolder = os.path.join("/data", "folio_scanid_namematch", "output_step1")
 
     # set the base string for file names
 

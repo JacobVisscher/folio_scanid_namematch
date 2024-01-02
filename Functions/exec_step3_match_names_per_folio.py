@@ -17,13 +17,13 @@ def run(inum, toegangsnummer):
     # batch should iterate
 
     # set path
-    path = "/data/"
+    path = "/media/rutger/NAHD653/"
 
-    path_folder = "/home/rutger/python/"
+    path_folder = "/data/folio_scanid_namematch/"
 
-    inputfolder = os.path.join("/home", "rutger", "python", "output_step0")
-    inputfolder_2 = os.path.join("/home", "rutger", "python", "output_step2")
-    outputfolder = os.path.join("/home", "rutger", "python", "output_step3")
+    inputfolder = os.path.join("/data", "folio_scanid_namematch", "output_step0")
+    inputfolder_2 = os.path.join("/data", "folio_scanid_namematch", "output_step2")
+    outputfolder = os.path.join("/data", "folio_scanid_namematch", "output_step3")
 
     # set the base string for file names
     basestring = "NL-HaNA_{}_".format(toegangsnummer)

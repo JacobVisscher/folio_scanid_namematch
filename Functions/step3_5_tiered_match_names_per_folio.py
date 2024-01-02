@@ -19,22 +19,22 @@ def string_exists_in_csv(csv_file, string):
 
 # set inventaris number
 print("input the inventaris number: for example '1' ")
-inumber = input()
+inumber = 1
 
 # set path
 path = "/data/"
 
 path_folder = "/home/rutger/python/"
 
-inputfolder = os.path.join("/home", "rutger", "python", "output_step0")
-inputfolder_2 = os.path.join("/home", "rutger", "python", "output_step2")
-outputfolder = os.path.join("/home", "rutger", "python", "output_step3")
+inputfolder = os.path.join("/data", "2.01.15_matching_output_files", "output_step0")
+inputfolder_2 = os.path.join("/data", "2.01.15_matching_output_files", "output_step2")
+outputfolder = os.path.join("/data", "2.01.15_matching_output_files", "output_step3")
 
 # set the base string for file names
-basestring = "NL-HaNA_2.13.04_"
+basestring = "NL-HaNA_2.01.15_"
 
 # set base string for inventaris links
-archive_directory = "2.13.04/"
+archive_directory = "2.01.15/"
 
 # input directory for the csv file
 directory_csv = "~/python/output_step0"
@@ -72,7 +72,7 @@ f.close()
 print(
     "input the max inventory number. make sure this is the same number you used in step 1. "
 )
-max_inv = 333
+max_page = 600
 match_percentages = [1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1]
 
 # Read the name list file and store the rows in a list
@@ -97,11 +97,12 @@ for match_percentage in match_percentages:
         reader = csv.reader(file)
         csv_rows = list(reader)
     # Loop over the inventory folio numbers
-    for i in range(1, max_inv):
+    for i in range(1, max_page):
         names = []
         uid = []
         folionumber = []
-        string_to_check = "2.13.04/{}//{}//".format(inumber, i)
+        rest = []
+        string_to_check = "2.01.15/{}//{}//".format(inumber, i)
 
         # check if i allready assigned to output?
         # print(csv_rows)
@@ -113,23 +114,25 @@ for match_percentage in match_percentages:
 
         # Loop over the rows in the inventory name list index.
         for row in name_list_rows:
-            if string_to_check in row[2]:
+            if string_to_check in row[4]:
                 selected_names = row[0].split()
                 names.extend(selected_names)
                 selected_names = row[1].split()
                 names.extend(selected_names)
-                uid.append(row[3])
+                uid.append(row[5])
 
         # skip empty folionumbers, if they are not empty, print the names found in the index.
         if len(names) == 0:
             print("No names found for page {}".format(i))
             continue
         print("Names in index for page {}".format(i))
-        print(names)
+        print(names, rest, uid)
 
         # Loop over the rows in names found int he htr of xml pages.
         for row2 in input_list_rows:
             selected_names2 = row2[0].split(",")
+            # print(selected_names2)
+            # print(names)
             selected_names_set = set(selected_names2)
             common_names_set = set(names) & selected_names_set
             percentage = len(common_names_set) / len(names)
@@ -152,7 +155,13 @@ for match_percentage in match_percentages:
     with open("/" + inputfolder + "/" + name_list_filename, newline="") as name_file:
         name_reader = csv.reader(name_file, delimiter=",")
         for row in name_reader:
-            name_dict[row[3]] = row[0:2]
+            print("name dict before is:")
+            print(name_dict)
+            print("row in namereader is:")
+            print(row)
+            name_dict[row[5]] = row[0:4]
+            print("name dict is")
+            print(name_dict)
 
     # Write the output file using the selected_names_dict defaultdict
     with open("/" + outputfolder + "/" + output_filename, "a", newline="") as file:

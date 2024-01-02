@@ -12,13 +12,13 @@ print("input the inventaris number: for example '1' ")
 inumber = input()
 
 # set path
-path = "/data/"
+path = "/media/rutger/NAHD653/"
 
-path_folder = "/home/rutger/python/"
+path_folder = "/data/folio_scanid_namematch/"
 
-inputfolder = os.path.join("/home", "rutger", "python", "output_step1")
+inputfolder = os.path.join("/data", "folio_scanid_namematch", "output_step1")
 
-outputfolder = os.path.join("/home", "rutger", "python", "output_step2")
+outputfolder = os.path.join("/data", "folio_scanid_namematch", "output_step2")
 
 # set the base string for file names
 basestring = "NL-HaNA_2.13.04_"
