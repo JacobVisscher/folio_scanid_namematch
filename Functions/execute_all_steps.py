@@ -11,20 +11,34 @@ import pandas as pd
 print(
     'voer in welk toegangsnummer je de naamsherkenning op wilt uitvoeren. deze toegang moet al wel volledig ge-HTR\'d zijn, en het step0 script moet al uitgevoerd zijn. het format voor het toegangsnummer is "2.01.15" '
 )
+
+# set inventorynumber number
 gekozen_toegangsnummer = "2.01.15"
-inputlist_folder = os.path.join(
-    "/data", "2.01.15_matching_output_files", "output_step0.2"
-)
 
-exec_step0_1_monsterboek_normalisation_index.run(gekozen_toegangsnummer)
-exec_step0_2_monsterboek_find_list.run(gekozen_toegangsnummer)
+# set path to functions and output
+folder_path = os.path.join("/data", "2.01.15_matching_output_files")
+# set path to files
+path_to_files = "/data/2.01.15/"
+# make a list of the inventories that exist in the scanned archive.
+list_of_inventarisnummers = os.listdir(path_to_files)
 
-input_list_file = os.path.join(inputlist_folder, "list_of_entries.csv")
-input_list = pd.read_csv(input_list_file)
+skipped_files = "skipped_files.txt"
+if os.path.isfile(skipped_files) == False:
+    open(skipped_files, "x")
 
-exec_step0_monsterboek_fill_files.run(gekozen_toegangsnummer)
-for i in input_list:
-    exec_step1_select_batch_name.run(i, gekozen_toegangsnummer)
-    exec_step2_match_names_per_batch.run(i, gekozen_toegangsnummer)
-    exec_step3_match_names_per_folio.run(i, gekozen_toegangsnummer)
-    exec_step3_5_tiered_match_names_per_folio.run(i, gekozen_toegangsnummer)
+exec_step0_1_monsterboek_normalisation_index.run(gekozen_toegangsnummer, folder_path)
+exec_step0_2_monsterboek_find_list.run(gekozen_toegangsnummer, folder_path)
+exec_step0_monsterboek_fill_files.run(gekozen_toegangsnummer, folder_path)
+for i in list_of_inventarisnummers:
+    exec_step1_select_batch_name.run(
+        i, gekozen_toegangsnummer, folder_path, path_to_files
+    )
+    exec_step2_match_names_per_batch.run(
+        i, gekozen_toegangsnummer, folder_path, path_to_files
+    )
+    exec_step3_match_names_per_folio.run(
+        i, gekozen_toegangsnummer, folder_path, path_to_files
+    )
+    exec_step3_5_tiered_match_names_per_folio.run(
+        i, gekozen_toegangsnummer, folder_path
+    )

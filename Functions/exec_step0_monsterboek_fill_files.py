@@ -5,21 +5,14 @@ import math
 import os
 
 
-def run(toegangsnummer):
+def run(toegangsnummer, folder_path):
     # set path
-    path_folder = os.path.join("/data", "2.01.15_matching_output_files")
 
-    inputfolder = os.path.join(
-        "/data", "2.01.15_matching_output_files", "output_step0.1"
-    )
+    inputfolder = os.path.join(folder_path, "output_step0.1")
 
-    inputlist_folder = os.path.join(
-        "/data", "2.01.15_matching_output_files", "output_step0.2"
-    )
+    inputlist_folder = os.path.join(folder_path, "output_step0.2")
 
-    outputfolder = os.path.join(
-        "/data", "2.01.15_matching_output_files", "output_step0"
-    )
+    outputfolder = os.path.join(folder_path, "output_step0")
 
     # set the base string for file names
     basestring = "NL-HaNA_{}_".format(toegangsnummer)
@@ -27,7 +20,7 @@ def run(toegangsnummer):
     archivelink_incomplete = "NL-HaNA/{}/".format(toegangsnummer)
 
     # how many inventarisses are in the archive
-    input_list_file = os.path.join(inputfolder, "list_of_entries.csv")
+    input_list_file = os.path.join(inputlist_folder, "list_of_entries.csv")
     input_list = pd.read_csv(input_list_file)
     # create csv files
     for i in input_list:
