@@ -6,29 +6,18 @@ import os
 import re
 
 
-def run(toegangsnummer):
+def run(toegangsnummer, folder_path):
     # set path
-    path_folder = os.path.join("/data", "2.01.15_matching_output_files")
-
-    inputfolder = os.path.join("/data", "2.01.15_matching_output_files", "input")
-
-    outputfolder = os.path.join(
-        "/data", "2.01.15_matching_output_files", "output_step0.1"
-    )
+    inputfolder = os.path.join(folder_path, "input")
+    outputfolder = os.path.join(folder_path, "output_step0.1")
     basestring = "NL-HaNA_{}_".format(toegangsnummer)
 
     # set base string for inventaris links
     archive_directory = "{}/".format(toegangsnummer)
 
-    # how many inventarisses are in the archive
-
-    # iterate through inventory based on nadere toegang document
-
-    # set nadere toegang document. document must be in the same folder as this script.
-    # look at how many indexes you have for the archive, and then put them in the blocks below. 1 block per index file, from target file to the print statement.
     target_file_base = "NT00239_PERSOON.csv"
-    target_file = os.path.join(inputfolder, "NT00239_PERSOON.csv")
-    output_file = os.path.join(outputfolder, "NT00239_PERSOON.csv")
+    target_file = os.path.join(inputfolder, target_file_base)
+    output_file = os.path.join(outputfolder, target_file_base)
 
     headerList = [
         "prs_achternaam",
@@ -84,8 +73,8 @@ def run(toegangsnummer):
     print("first index done!")
 
     target_file_base = "NT00242_PERSOON.csv"
-    target_file = os.path.join(inputfolder, "NT00242_PERSOON.csv")
-    output_file = os.path.join(outputfolder, "NT00242_PERSOON.csv")
+    target_file = os.path.join(inputfolder, target_file_base)
+    output_file = os.path.join(outputfolder, target_file_base)
     print(target_file)
 
     f = open(output_file, "w", newline="")
@@ -130,8 +119,8 @@ def run(toegangsnummer):
     print("second index done!")
 
     target_file_base = "NT00243_PERSOON.csv"
-    target_file = os.path.join(inputfolder, "NT00243_PERSOON.csv")
-    output_file = os.path.join(outputfolder, "NT00243_PERSOON.csv")
+    target_file = os.path.join(inputfolder, target_file_base)
+    output_file = os.path.join(outputfolder, target_file_base)
     print(target_file)
 
     f = open(output_file, "w", newline="")
@@ -178,8 +167,8 @@ def run(toegangsnummer):
     print("third index done!")
 
     target_file_base = "NT00245_PERSOON.csv"
-    target_file = os.path.join(inputfolder, "NT00245_PERSOON.csv")
-    output_file = os.path.join(outputfolder, "NT00245_PERSOON.csv")
+    target_file = os.path.join(inputfolder, target_file_base)
+    output_file = os.path.join(outputfolder, target_file_base)
     print(target_file)
 
     f = open(output_file, "w", newline="")

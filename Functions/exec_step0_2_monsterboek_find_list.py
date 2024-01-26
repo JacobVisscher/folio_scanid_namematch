@@ -6,17 +6,11 @@ import os
 import re
 
 
-def run(toegangsnummer):
+def run(toegangsnummer, folder_path):
     # set path
-    path_folder = os.path.join("/data", "2.01.15_matching_output_files")
+    inputfolder = os.path.join(folder_path, "output_step0.1")
 
-    inputfolder = os.path.join(
-        "/data", "2.01.15_matching_output_files", "output_step0.1"
-    )
-
-    outputfolder = os.path.join(
-        "/data", "2.01.15_matching_output_files", "output_step0.2"
-    )
+    outputfolder = os.path.join(folder_path, "output_step0.2")
 
     # set the base string for file names
     basestring = "NL-HaNA_{}_".format(toegangsnummer)
